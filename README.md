@@ -1,1 +1,1 @@
-# Neural-Gauge-Fields
+# General Neural Gauge Fields
