@@ -13,3 +13,6 @@
 
 **General Neural Gauge Fields** » [[Paper](https://openreview.net/pdf?id=XWkWK2UagFR)] <br>
 [Fangneng Zhan](https://fnzhan.com/), [Lingjie Liu](https://lingjie0206.github.io/), [Adam Kortylewsk](https://generativevision.mpi-inf.mpg.de/), [Christian Theobalt](https://people.mpi-inf.mpg.de/~theobalt/)
+
+## Update
+- *04/2023*: This is an initial release of basic implementation. We are working on the extension of this work, full implementation with cleaned code will be released later.
