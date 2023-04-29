@@ -8,35 +8,8 @@
 <!-- [![made-with-Markdown](https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg)](http://commonmark.org) -->
 <!-- [![Documentation Status](https://readthedocs.org/projects/ansicolortags/badge/?version=latest)](http://ansicolortags.readthedocs.io/?badge=latest) -->
 
-![Teaser](teaser.png)
-
 <!-- ### TODO -->
 <!-- - MISE Dataset for multimodel image synthesis and editing -->
 
-This project is associated with our survey paper which comprehensively contextualizes the advance of the recent Multimodal Image Synthesis \& Editing (MISE) and formulates taxonomies according to data modality and model architectures.
-<!-- For more details, please refer to: <br> -->
-
-**General Neural Gauge Fields** » [[Paper](https://arxiv.org/abs/2112.13592)] <br>
+**General Neural Gauge Fields** » [[Paper](https://openreview.net/pdf?id=XWkWK2UagFR)] <br>
 [Fangneng Zhan](https://fnzhan.com/), [Lingjie Liu](https://lingjie0206.github.io/), [Adam Kortylewsk](https://generativevision.mpi-inf.mpg.de/), [Christian Theobalt](https://people.mpi-inf.mpg.de/~theobalt/)
-
-
-## Related Surveys
-
-**Adversarial Text-to-Image Synthesis: A Review**<br>
-*Stanislav Frolov, Tobias Hinz, Federico Raue, Jörn Hees, Andreas Dengel*<br>
-Neural Networks 2021
-[[Paper](https://arxiv.org/abs/2101.09983)]
-
-**GAN Inversion: A Survey**<br>
-*Weihao Xia, Yulun Zhang, Yujiu Yang, Jing-Hao Xue, Bolei Zhou, Ming-Hsuan Yang*<br>
-TPAMI 2022 
-[[Paper](https://arxiv.org/abs/2101.05278)]
-[[Project](https://github.com/weihaox/awesome-gan-inversion)]
-
-**Deep Image Synthesis from Intuitive User Input: A Review and Perspectives**<br>
-*Yuan Xue, Yuan-Chen Guo, Han Zhang, Tao Xu, Song-Hai Zhang, Xiaolei Huang*<br>
-Computational Visual Media 2022
-[[Paper](https://arxiv.org/abs/2107.04240)]
-
-
-## Table of Contents (Work in Progress)
