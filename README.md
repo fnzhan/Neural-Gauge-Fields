@@ -10,7 +10,7 @@
 
 ## [Paper](https://openreview.net/pdf?id=XWkWK2UagFR)  |  [Project page](https://fnzhan.com/neural-gauge-fields/)  | [Video](https://youtu.be/Enak-qXwagg)
 
-**General Neural Gauge Fields** » [[Paper](https://openreview.net/pdf?id=XWkWK2UagFR)] <br>
+<!-- **General Neural Gauge Fields** <br> -->
 [Fangneng Zhan](https://fnzhan.com/), [Lingjie Liu](https://lingjie0206.github.io/), [Adam Kortylewsk](https://generativevision.mpi-inf.mpg.de/), [Christian Theobalt](https://people.mpi-inf.mpg.de/~theobalt/)
 
 ## Update
