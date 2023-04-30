@@ -13,19 +13,6 @@ Max Planck Institute for Informatics, Germany <br>
 
 
 
-
-## Citation
-If you use this code for your research, please cite our papers.
-```bibtex
-@inproceedings{zhan2022modulated,
-  title={Modulated contrast for versatile image synthesis},
-  author={Zhan, Fangneng and Zhang, Jiahui and Yu, Yingchen and Wu, Rongliang and Lu, Shijian},
-  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
-  pages={18280--18290},
-  year={2022}
-}
-```
-
 ## Citation
 If you use this code for your research, please cite our papers.
 ```bibtex
