@@ -19,7 +19,7 @@ If you use this code for your research, please cite our papers.
 @inproceedings{zhan2023general,
   title={General Neural Gauge Fields},
   author={Zhan, Fangneng and Liu, Lingjie and Kortylewski, Adam and Theobalt, Christian},
-  booktitle={International Conference on Learning Representations (ICLR)},
+  booktitle={The Eleventh International Conference on Learning Representations},
   year={2023}
 }
 ```
