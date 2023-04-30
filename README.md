@@ -1,4 +1,4 @@
-# <p align=center>General **Neural Gauge Fields**</p>
+# <p align=center>**Neural Gauge Fields**</p>
 ![Teaser](teaser.png)
 
 ## [Paper](https://openreview.net/pdf?id=XWkWK2UagFR)  |  [Project page](https://fnzhan.com/neural-gauge-fields/)  | [Video](https://youtu.be/Enak-qXwagg)
