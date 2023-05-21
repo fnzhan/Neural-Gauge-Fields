@@ -8,8 +8,8 @@
 The International Conference on Learning Representations (ICLR), 2023
 <!-- Max Planck Institute for Informatics, Germany <br> -->
 
-**Neural Gauge Fields: Analysis, Computation, and Beyond** <br>
-ACM Transactions on Graphics (TOG) and SIGGRAPH, 2024
+<!-- **Neural Gauge Fields: Analysis, Computation, and Beyond** <br>
+ACM Transactions on Graphics (TOG) and SIGGRAPH, 2024 -->
 
 ## Update
 - *04/2023*: This is an initial release of basic implementation. We are working on the extension of this work, full implementation with cleaned code will be released later.
