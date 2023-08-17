@@ -1,5 +1,5 @@
 <!-- # <p align=center>General **Neural Gauge Fields**</p> -->
-![Teaser](teaser2.jpg)
+![Teaser](teaser.jpg)
 
 ## [Paper](https://openreview.net/pdf?id=XWkWK2UagFR)  |  [Project page](https://fnzhan.com/Neural-Gauge-Fields/)  | [Video](https://youtu.be/Enak-qXwagg)
 
