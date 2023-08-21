@@ -31,9 +31,9 @@ pip install tqdm trimesh scikit-image opencv-python configargparse lpips imageio
 The 3D coordinate is transformed to 2D manifold (e.g., sphere and square) to index neural fields, where explicit (view-dependent) 
 2D texture can be obtained for scene editing. Enter UV-Mapping directory to play with it.
 ### 1. Dataset & Checkpoint
-Five processed scenes from DTU dataset can be downloaded from [Google Drive](https://drive.google.com/file/d/1Hm2R4zH0_U9enbs-uygK3jwWXsQ7o5TQ/view?usp=sharing). <br>
-The pretrained checkpoints on the five scenes can be downloaded from [Google Drive](https://drive.google.com/file/d/119sKwSshP14joo59KtsAVvrPSLw6AtQO/view?usp=drive_link). 
-Saving the checkpoints in `UV-Mapping/`.
+Five pre-processed scenes from DTU dataset can be downloaded from [Google Drive](https://drive.google.com/file/d/1Hm2R4zH0_U9enbs-uygK3jwWXsQ7o5TQ/view?usp=sharing). <br>
+Pre-trained checkpoints on the five scenes can be downloaded from [Google Drive](https://drive.google.com/file/d/119sKwSshP14joo59KtsAVvrPSLw6AtQO/view?usp=drive_link). 
+Save the checkpoints in `UV-Mapping/`.
 ### 2. Test
 To render with edited texture (e.g., for DTU scan83), run below command (you can also set the <mark>target_texture</mark> in `dtu_test.sh` to your custom texture path):
 ````bash
