@@ -67,3 +67,8 @@ If you use this code for your research, please cite our papers.
   year={2023}
 }
 ```
+
+## Acknowledgement
+Thanks NeuTex, K-Plane, TensoRF for releasing their implementation codes. 
+
+
