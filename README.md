@@ -47,13 +47,27 @@ bash dtu_train.sh 83
 ````
 
 ## Triplane Projection
-Instead of applying orthogonal projection from 3D space to Triplane, we directly learn a flexible mapping with neural fields driven by rendering loss.
-### 1. Training
+<img src='triplane.jpg' align="center">
+Instead of applying orthogonal projection from 3D space to Triplane, we directly learn a flexible mapping with neural fields 
+driven by rendering loss. Enter TriPlane directory to play with it.
 
+
+### 1. Dataset & Checkpoint
+Please refer to Synthetic-NeRF dataset.
+### 2. Test
+run below command:
+````bash
+bash test.sh
+````
+### 3. Training
+Run below command:
+````bash
+bash train.sh
+````
 
 ## Todo
 - ✅ Learning UV mapping for texture editing.
-- ⬜️ Learning transform for Triplane and TensoRF.
+- ✅ Learning transform for Triplane.
 - ⬜️ Learning discrete transform for hash mapping.
 
 
