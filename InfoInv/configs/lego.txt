@@ -1,0 +1,18 @@
+model_name = TriPlane
+expname = TriPlane/lego
+datadir = /CT/Neural-Gauge-Fields/work/Datasets/NeRF-Synthetic/lego
+basedir = ./log
+dataset_name = blender
+
+n_iters = 30000
+batch_size = 4096
+
+N_voxel_init = 16777216 #256**3  # 200**3,  2097156
+N_voxel_final = 16777216 # 300**3
+upsamp_list = [2000, 2500] #[2000,3000,4000,5500,7000]
+update_AlphaMask_list = [2000, 2500] #[2000, 2500]
+
+N_vis = 5
+vis_every = 2100 # 30001
+render_test = 1
+

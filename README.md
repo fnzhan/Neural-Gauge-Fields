@@ -25,7 +25,7 @@ pip install tqdm trimesh scikit-image opencv-python configargparse lpips imageio
 ```
 
 
-## UV Mapping
+## Learning UV Mapping
 <img src='texture.gif' align="center">
 
 The 3D coordinate is transformed to 2D manifold (e.g., sphere and square) to index neural fields, where explicit (view-dependent) 
@@ -46,7 +46,7 @@ Run below commands directly (you can also set <mark>data_root</mark> in `dtu_tra
 bash dtu_train.sh 83
 ````
 
-## Triplane Projection
+## Learning Triplane Projection
 <img src='triplane.jpg' align="center">
 Instead of applying orthogonal projection from 3D space to Triplane, we directly learn a flexible mapping with neural fields 
 driven by rendering loss. Enter TriPlane directory to play with it.
@@ -65,9 +65,32 @@ Run below command:
 bash train.sh
 ````
 
+
+
+## InfoInv
+<img src='infoinv.jpg' align="center">
+The derived InfoInv proves that sinusoidal position encoding is actually applying phase transform to the coordinate and 
+allows to preserve relative position information inherently. Naively including InfoInv can boost the performance of
+grid-based and MLP-based neural fields. Enter InfoInv directory to run experiments.
+
+
+### 1. Dataset
+Please refer to Synthetic-NeRF dataset. Note to modify the dataset path in `configs/lego.txt`.
+### 2. Training
+To include InfoInv, run below command:
+````bash
+python3 main.py --config configs/lego.txt --infoinv
+````
+To exclude InfoInv, run below command:
+````bash
+python3 main.py --config configs/lego.txt
+````
+
+
 ## Todo
 - ✅ Learning UV mapping for texture editing.
-- ✅ Learning transform for Triplane.
+- ✅ Learning Triplane projection for view synthesis.
+- ✅ Including InfoInv in neural fields.
 - ⬜️ Learning discrete transform for hash mapping.
 
 
