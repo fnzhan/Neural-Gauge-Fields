@@ -12,7 +12,7 @@ The International Conference on Learning Representations (ICLR), 2023
 ACM Transactions on Graphics (TOG) and SIGGRAPH, 2024 -->
 
 ## Update
-- *08/2023*: We release an improved UV Mapping, which allows to learn explicit (view-dependent) texture without any regularization.
+- *09/2023*: We release an improved UV Mapping and learned TriPlane projection, which allow to learn gauge transformation without any regularization.
 - *04/2023*: This is an initial release of basic implementation. We are working on the extension of this work, full implementation with cleaned code will be released later.
 
 ## Installation
@@ -24,6 +24,7 @@ pip install torch torchvision
 pip install tqdm trimesh scikit-image opencv-python configargparse lpips imageio-ffmpeg kornia lpips tensorboard
 ```
 
+<br>
 
 ## Learning UV Mapping
 <img src='texture.gif' align="center">
@@ -46,28 +47,30 @@ Run below commands directly (you can also set <mark>data_root</mark> in `dtu_tra
 bash dtu_train.sh 83
 ````
 
+<br>
+
 ## Learning Triplane Projection
 <img src='triplane.jpg' align="center">
 Instead of applying orthogonal projection from 3D space to Triplane, we directly learn a flexible mapping with neural fields 
 driven by rendering loss. Enter TriPlane directory to play with it.
 
 
-### 1. Dataset & Checkpoint
+### 1. Dataset
 Please refer to Synthetic-NeRF dataset.
-### 2. Test
-run below command:
-````bash
-bash test.sh
-````
-### 3. Training
+### 2. Training with learned projection
 Run below command:
 ````bash
-bash train.sh
+python3 main.py --config configs/lego.txt
+````
+### 3. Training without learned projection
+Set gauge_start in `configs/lego.txt` to a number larger than the total iterations, e.g., 30001. Then run:
+````bash
+python3 main.py --config configs/lego.txt
 ````
 
+<br>
 
-
-## InfoInv
+## InfoInv for View Synthesis
 <img src='infoinv.jpg' align="center">
 The derived InfoInv proves that sinusoidal position encoding is actually applying phase transform to the coordinate and 
 allows to preserve relative position information inherently. Naively including InfoInv can boost the performance of
@@ -85,7 +88,7 @@ To exclude InfoInv, run below command:
 ````bash
 python3 main.py --config configs/lego.txt
 ````
-
+The effectiveness of InfoInv for surface reconstruction is also proved in [PET-NeuS](https://github.com/yiqun-wang/PET-NeuS). 
 
 ## Todo
 - ✅ Learning UV mapping for texture editing.
