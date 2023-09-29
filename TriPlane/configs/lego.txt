@@ -1,5 +1,5 @@
-model_name = TensoRF
-expname = TensoRF/lego
+model_name = TriPlane
+expname = TriPlane/lego
 datadir = /CT/Neural-Gauge-Fields/work/Datasets/NeRF-Synthetic/lego
 basedir = ./log
 dataset_name = blender
@@ -15,4 +15,5 @@ update_AlphaMask_list = [2000, 2500] #[2000, 2500]
 N_vis = 5
 vis_every = 2100 # 30001
 render_test = 1
+gauge_start=4000
 

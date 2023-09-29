@@ -10,7 +10,7 @@ import torch
 
 from dataLoader import dataset_dict
 from dataLoader.ray_utils import get_rays
-from models.Field_mlp import *
+from models.Field import *
 from utils import *
 from opt import config_parser
 
@@ -18,17 +18,6 @@ from opt import config_parser
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 to8b = lambda x : (255*np.clip(x,0,1)).astype(np.uint8)
 
-@torch.no_grad()
-def mesh(args):
-
-    ckpt = torch.load(args.ckpt, map_location=device)
-    kwargs = ckpt['kwargs']
-    kwargs.update({'device': device})
-    field = eval(args.model_name)(**kwargs)
-    field.load(ckpt)
-
-    alpha,_ = field.getDenseAlpha()
-    convert_sdf_samples_to_ply(alpha.cpu(), f'{args.ckpt[:-3]}.ply',bbox=field.aabb.cpu(), level=0.005)
 
 
 @torch.no_grad()
@@ -239,7 +228,7 @@ def train(args):
         print('*****continue_training*****')
     else:
         field = eval(args.model_name)(aabb, reso_cur, device, near_far=near_far, alphaMask_thres=args.alpha_mask_thre,
-                    distance_scale=args.distance_scale, step_ratio=args.step_ratio)
+                    distance_scale=args.distance_scale, step_ratio=args.step_ratio, gauge_start=args.gauge_start)
 
 
     grad_vars = field.get_optparam_groups(args.lr_init, args.lr_basis)

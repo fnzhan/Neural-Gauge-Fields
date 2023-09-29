@@ -112,6 +112,7 @@ def config_parser(cmd=None):
 
     parser.add_argument('--transform_type', type=str, default='continuous')
 
+    parser.add_argument("--gauge_start", type=int, default=0, help='gauge start from this iteration')
 
     if cmd is not None:
         return parser.parse_args(cmd)

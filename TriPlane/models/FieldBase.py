@@ -43,7 +43,7 @@ class AlphaGridMask(torch.nn.Module):
 
 class Base(torch.nn.Module):
     def __init__(self, aabb, gridSize, device, alphaMask=None, near_far=[2.0,6.0], alphaMask_thres=0.001, distance_scale=25,
-                 rayMarch_weight_thres=0.0001, step_ratio=2.0):
+                 rayMarch_weight_thres=0.0001, step_ratio=2.0, gauge_start=0):
         super(Base, self).__init__()
         self.aabb = aabb
         self.alphaMask = alphaMask
@@ -57,7 +57,7 @@ class Base(torch.nn.Module):
         self.step_ratio = step_ratio
 
         self.init_para(gridSize)
-        self.init_model(device=device)
+        self.init_model(device=device, gauge_start=gauge_start)
 
 
     def init_para(self, gridSize):
@@ -73,7 +73,7 @@ class Base(torch.nn.Module):
         print("sampling step size: ", self.stepSize)
         print("sampling number: ", self.nSamples)
 
-    def init_model(self, code_num=256, code_dim=256, scale=0.1, res=16, device=None):
+    def init_model(self, code_num=256, code_dim=256, scale=0.1, res=16, device=None, gauge_start=0):
         pass
     
     def compute_gauge(self, xyz_sampled):
@@ -131,15 +131,8 @@ class Base(torch.nn.Module):
         step = stepsize * rng.to(rays_o.device)
         interpx = (t_min[...,None] + step)
 
-        # print('*****rays', rays_o[...,None,:].shape, rays_d[...,None,:].shape, interpx[...,None].shape)
-        # torch.Size([4096, 1, 3]) torch.Size([4096, 1, 3]) torch.Size([4096, 443, 1])
-        # 1/0
-
         rays_pts = rays_o[...,None,:] + rays_d[...,None,:] * interpx[...,None]
         mask_outbbox = ((self.aabb[0]>rays_pts) | (rays_pts>self.aabb[1])).any(dim=-1)
-
-        # print('****ray_ndc****', N_samples, rays_pts.shape, interpx.shape) # 1039 torch.Size([4096, 1039, 3]) torch.Size([4096, 1039])
-        # 1/0
 
         return rays_pts, interpx, ~mask_outbbox
 
@@ -158,8 +151,8 @@ class Base(torch.nn.Module):
         if alpha_mask.any():
             xyz_sampled = self.normalize_coord(xyz_locs[alpha_mask])
             # alpha_density = self.compute_density(xyz_sampled)
-            alpha_xy, alpha_yz, alpha_xz, alpha_z, alpha_x, alpha_y = self.compute_gauge(xyz_sampled, iteration=-1)
-            alpha_density = self.compute_density(alpha_xy, alpha_yz, alpha_xz, alpha_z, alpha_x, alpha_y)
+            alpha_xy, alpha_yz, alpha_xz = self.compute_gauge(xyz_sampled, iteration=-1)
+            alpha_density = self.compute_density(alpha_xy, alpha_yz, alpha_xz)
             density[alpha_mask] = alpha_density
         alpha = 1 - torch.exp(-density*length).view(xyz_locs.shape[:-1])
 
@@ -278,21 +271,18 @@ class Base(torch.nn.Module):
         xy = torch.zeros((*xyz_sampled.shape[:2], 2), device=xyz_sampled.device) #.view(-1, 2)
         yz = torch.zeros((*xyz_sampled.shape[:2], 2), device=xyz_sampled.device) #.view(-1, 2)
         xz = torch.zeros((*xyz_sampled.shape[:2], 2), device=xyz_sampled.device) #.view(-1, 2)
-        z = torch.zeros((*xyz_sampled.shape[:2], 1), device=xyz_sampled.device)
-        x = torch.zeros((*xyz_sampled.shape[:2], 1), device=xyz_sampled.device)
-        y = torch.zeros((*xyz_sampled.shape[:2], 1), device=xyz_sampled.device)
 
 
         if valid_ray.any():
             # print('***2***', xyz_sampled.shape, xyz_sampled[valid_ray].shape)
             xyz_sampled = self.normalize_coord(xyz_sampled)
-            valid_xy, valid_yz, valid_xz, valid_z, valid_x, valid_y = self.compute_gauge(xyz_sampled[valid_ray], iteration=iteration)
-            valid_density = self.compute_density(valid_xy, valid_yz, valid_xz, valid_z, valid_x, valid_y)
+            valid_xy, valid_yz, valid_xz = self.compute_gauge(xyz_sampled[valid_ray], iteration=iteration)
+            valid_density = self.compute_density(valid_xy, valid_yz, valid_xz)
             density[valid_ray] = valid_density
             # valid_ray = valid_ray.view(-1)
             # print('2:', xy.shape, valid_ray.shape, valid_xy.shape)
             xy[valid_ray], yz[valid_ray], xz[valid_ray] = valid_xy, valid_yz, valid_xz
-            z[valid_ray], x[valid_ray], y[valid_ray] = valid_z, valid_x, valid_y
+            # z[valid_ray], x[valid_ray], y[valid_ray] = valid_z, valid_x, valid_y
             # 1/0
 
         alpha, weight, bg_weight = raw2alpha(density, dists * self.distance_scale)
@@ -300,7 +290,7 @@ class Base(torch.nn.Module):
         # print('1:', weight.shape, rgb_mask.shape, xy.shape)
 
         if rgb_mask.any():
-            valid_rgb = self.compute_rgb(xy[rgb_mask], yz[rgb_mask], xz[rgb_mask], z[rgb_mask], x[rgb_mask], y[rgb_mask], viewdirs[rgb_mask])
+            valid_rgb = self.compute_rgb(xy[rgb_mask], yz[rgb_mask], xz[rgb_mask], viewdirs[rgb_mask])
             rgb[rgb_mask] = valid_rgb
 
         acc_map = torch.sum(weight, -1)
