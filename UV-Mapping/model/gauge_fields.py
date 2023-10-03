@@ -179,7 +179,7 @@ class InverseGauge(nn.Module):
             raise Exception("Unknown primitive type {}".format(primitive_type))
         self.num_points_per_primitive = num_points_per_primitive
 
-        # Intialize deformation networks
+        # Initialize deformation networks
         self.inverse_network = InverseNetwork(self.input_point_dim)
         with torch.no_grad():
             self.label = torch.zeros(num_points_per_primitive).long()
