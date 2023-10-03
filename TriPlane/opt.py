@@ -37,12 +37,12 @@ def config_parser(cmd=None):
     parser.add_argument("--lr_decay_iters", type=int, default=-1,
                         help = 'number of iterations the lr will decay to the target ratio; -1 will set it to n_iters')
     parser.add_argument("--lr_decay_target_ratio", type=float, default=0.1,
-                        help='the target decay ratio; after decay_iters inital lr decays to lr*ratio')
+                        help='the target decay ratio; after decay_iters initial lr decays to lr*ratio')
     parser.add_argument("--lr_upsample_reset", type=int, default=1,
-                        help='reset lr to inital after upsampling')
+                        help='reset lr to initial after upsampling')
 
     # loss
-    parser.add_argument("--L1_weight_inital", type=float, default=0.0,
+    parser.add_argument("--L1_weight_initial", type=float, default=0.0,
                         help='loss weight')
     parser.add_argument("--L1_weight_rest", type=float, default=0,
                         help='loss weight')
