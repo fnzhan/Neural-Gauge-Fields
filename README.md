@@ -27,7 +27,6 @@ pip install tqdm trimesh scikit-image opencv-python configargparse lpips imageio
 <br>
 
 ## Learning UV Mapping
-<img src='texture.gif' align="center">
 
 The 3D coordinate is transformed to 2D manifold (e.g., sphere and square) to index neural fields, where explicit (view-dependent) 
 2D texture can be obtained for scene editing. Enter UV-Mapping directory to play with it.
