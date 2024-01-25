@@ -49,7 +49,6 @@ bash dtu_train.sh 83
 <br>
 
 ## Learning Triplane Projection
-<img src='triplane.jpg' align="center">
 Instead of applying orthogonal projection from 3D space to Triplane, we directly learn a flexible mapping with neural fields 
 driven by rendering loss. Enter TriPlane directory to play with it.
 
